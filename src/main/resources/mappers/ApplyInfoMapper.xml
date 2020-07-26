@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.ApplyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.ApplyInfo">
+    <id column="ap_id" jdbcType="INTEGER" property="apId" />
+    <result column="ap_name" jdbcType="VARCHAR" property="apName" />
+    <result column="ap_km" jdbcType="VARCHAR" property="apKm" />
+    <result column="ap_update_time" jdbcType="VARCHAR" property="apUpdateTime" />
+    <result column="ap_num" jdbcType="VARCHAR" property="apNum" />
+    <result column="ap_add1" jdbcType="VARCHAR" property="apAdd1" />
+    <result column="ap_add2" jdbcType="VARCHAR" property="apAdd2" />
+    <result column="ap_add3" jdbcType="VARCHAR" property="apAdd3" />
+    <result column="ap_ip" jdbcType="VARCHAR" property="apIp" />
+    <result column="ap_location" jdbcType="VARCHAR" property="apLocation" />
+    <result column="ap_time" jdbcType="VARCHAR" property="apTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ap_id, ap_name, ap_km, ap_update_time, ap_num, ap_add1, ap_add2, ap_add3, ap_ip, 
+    ap_location, ap_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply_info1
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply_info1
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.ApplyInfo">
+    insert into apply_info1 (ap_id, ap_name, ap_km, 
+      ap_update_time, ap_num, ap_add1, 
+      ap_add2, ap_add3, ap_ip, 
+      ap_location, ap_time)
+    values (#{apId,jdbcType=INTEGER}, #{apName,jdbcType=VARCHAR}, #{apKm,jdbcType=VARCHAR}, 
+      #{apUpdateTime,jdbcType=VARCHAR}, #{apNum,jdbcType=VARCHAR}, #{apAdd1,jdbcType=VARCHAR}, 
+      #{apAdd2,jdbcType=VARCHAR}, #{apAdd3,jdbcType=VARCHAR}, #{apIp,jdbcType=VARCHAR}, 
+      #{apLocation,jdbcType=VARCHAR}, #{apTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.ApplyInfo">
+    insert into apply_info1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="apId != null">
+        ap_id,
+      </if>
+      <if test="apName != null">
+        ap_name,
+      </if>
+      <if test="apKm != null">
+        ap_km,
+      </if>
+      <if test="apUpdateTime != null">
+        ap_update_time,
+      </if>
+      <if test="apNum != null">
+        ap_num,
+      </if>
+      <if test="apAdd1 != null">
+        ap_add1,
+      </if>
+      <if test="apAdd2 != null">
+        ap_add2,
+      </if>
+      <if test="apAdd3 != null">
+        ap_add3,
+      </if>
+      <if test="apIp != null">
+        ap_ip,
+      </if>
+      <if test="apLocation != null">
+        ap_location,
+      </if>
+      <if test="apTime != null">
+        ap_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="apId != null">
+        #{apId,jdbcType=INTEGER},
+      </if>
+      <if test="apName != null">
+        #{apName,jdbcType=VARCHAR},
+      </if>
+      <if test="apKm != null">
+        #{apKm,jdbcType=VARCHAR},
+      </if>
+      <if test="apUpdateTime != null">
+        #{apUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="apNum != null">
+        #{apNum,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd1 != null">
+        #{apAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd2 != null">
+        #{apAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd3 != null">
+        #{apAdd3,jdbcType=VARCHAR},
+      </if>
+      <if test="apIp != null">
+        #{apIp,jdbcType=VARCHAR},
+      </if>
+      <if test="apLocation != null">
+        #{apLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="apTime != null">
+        #{apTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.ApplyInfo">
+    update apply_info1
+    <set>
+      <if test="apName != null">
+        ap_name = #{apName,jdbcType=VARCHAR},
+      </if>
+      <if test="apKm != null">
+        ap_km = #{apKm,jdbcType=VARCHAR},
+      </if>
+      <if test="apUpdateTime != null">
+        ap_update_time = #{apUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="apNum != null">
+        ap_num = #{apNum,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd1 != null">
+        ap_add1 = #{apAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd2 != null">
+        ap_add2 = #{apAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="apAdd3 != null">
+        ap_add3 = #{apAdd3,jdbcType=VARCHAR},
+      </if>
+      <if test="apIp != null">
+        ap_ip = #{apIp,jdbcType=VARCHAR},
+      </if>
+      <if test="apLocation != null">
+        ap_location = #{apLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="apTime != null">
+        ap_time = #{apTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.ApplyInfo">
+    update apply_info1
+    set ap_name = #{apName,jdbcType=VARCHAR},
+      ap_km = #{apKm,jdbcType=VARCHAR},
+      ap_update_time = #{apUpdateTime,jdbcType=VARCHAR},
+      ap_num = #{apNum,jdbcType=VARCHAR},
+      ap_add1 = #{apAdd1,jdbcType=VARCHAR},
+      ap_add2 = #{apAdd2,jdbcType=VARCHAR},
+      ap_add3 = #{apAdd3,jdbcType=VARCHAR},
+      ap_ip = #{apIp,jdbcType=VARCHAR},
+      ap_location = #{apLocation,jdbcType=VARCHAR},
+      ap_time = #{apTime,jdbcType=VARCHAR}
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+</mapper>

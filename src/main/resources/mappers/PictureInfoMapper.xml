@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.PictureInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.PictureInfo">
+    <id column="pic_id" jdbcType="INTEGER" property="picId" />
+    <result column="pic_num" jdbcType="VARCHAR" property="picNum" />
+    <result column="pi_topic" jdbcType="VARCHAR" property="piTopic" />
+    <result column="pi_date" jdbcType="VARCHAR" property="piDate" />
+    <result column="pi_url" jdbcType="VARCHAR" property="piUrl" />
+    <result column="pi_status" jdbcType="VARCHAR" property="piStatus" />
+    <result column="pi_add1" jdbcType="VARCHAR" property="piAdd1" />
+    <result column="pi_add2" jdbcType="VARCHAR" property="piAdd2" />
+    <result column="pi_add3" jdbcType="VARCHAR" property="piAdd3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pic_id, pic_num, pi_topic, pi_date, pi_url, pi_status, pi_add1, pi_add2, pi_add3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from picture_info
+    where pic_id = #{picId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from picture_info
+    where pic_id = #{picId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.PictureInfo">
+    insert into picture_info (pic_id, pic_num, pi_topic, 
+      pi_date, pi_url, pi_status, 
+      pi_add1, pi_add2, pi_add3
+      )
+    values (#{picId,jdbcType=INTEGER}, #{picNum,jdbcType=VARCHAR}, #{piTopic,jdbcType=VARCHAR}, 
+      #{piDate,jdbcType=VARCHAR}, #{piUrl,jdbcType=VARCHAR}, #{piStatus,jdbcType=VARCHAR}, 
+      #{piAdd1,jdbcType=VARCHAR}, #{piAdd2,jdbcType=VARCHAR}, #{piAdd3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.PictureInfo">
+    insert into picture_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        pic_id,
+      </if>
+      <if test="picNum != null">
+        pic_num,
+      </if>
+      <if test="piTopic != null">
+        pi_topic,
+      </if>
+      <if test="piDate != null">
+        pi_date,
+      </if>
+      <if test="piUrl != null">
+        pi_url,
+      </if>
+      <if test="piStatus != null">
+        pi_status,
+      </if>
+      <if test="piAdd1 != null">
+        pi_add1,
+      </if>
+      <if test="piAdd2 != null">
+        pi_add2,
+      </if>
+      <if test="piAdd3 != null">
+        pi_add3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        #{picId,jdbcType=INTEGER},
+      </if>
+      <if test="picNum != null">
+        #{picNum,jdbcType=VARCHAR},
+      </if>
+      <if test="piTopic != null">
+        #{piTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="piDate != null">
+        #{piDate,jdbcType=VARCHAR},
+      </if>
+      <if test="piUrl != null">
+        #{piUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="piStatus != null">
+        #{piStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd1 != null">
+        #{piAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd2 != null">
+        #{piAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd3 != null">
+        #{piAdd3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.PictureInfo">
+    update picture_info
+    <set>
+      <if test="picNum != null">
+        pic_num = #{picNum,jdbcType=VARCHAR},
+      </if>
+      <if test="piTopic != null">
+        pi_topic = #{piTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="piDate != null">
+        pi_date = #{piDate,jdbcType=VARCHAR},
+      </if>
+      <if test="piUrl != null">
+        pi_url = #{piUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="piStatus != null">
+        pi_status = #{piStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd1 != null">
+        pi_add1 = #{piAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd2 != null">
+        pi_add2 = #{piAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="piAdd3 != null">
+        pi_add3 = #{piAdd3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pic_id = #{picId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.PictureInfo">
+    update picture_info
+    set pic_num = #{picNum,jdbcType=VARCHAR},
+      pi_topic = #{piTopic,jdbcType=VARCHAR},
+      pi_date = #{piDate,jdbcType=VARCHAR},
+      pi_url = #{piUrl,jdbcType=VARCHAR},
+      pi_status = #{piStatus,jdbcType=VARCHAR},
+      pi_add1 = #{piAdd1,jdbcType=VARCHAR},
+      pi_add2 = #{piAdd2,jdbcType=VARCHAR},
+      pi_add3 = #{piAdd3,jdbcType=VARCHAR}
+    where pic_id = #{picId,jdbcType=INTEGER}
+  </update>
+</mapper>

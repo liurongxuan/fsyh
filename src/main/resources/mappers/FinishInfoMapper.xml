@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.FinishInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.FinishInfo">
+    <id column="fi_id" jdbcType="INTEGER" property="fiId" />
+    <result column="fi_name" jdbcType="VARCHAR" property="fiName" />
+    <result column="fi_km" jdbcType="VARCHAR" property="fiKm" />
+    <result column="fi_num" jdbcType="VARCHAR" property="fiNum" />
+    <result column="fi_time" jdbcType="VARCHAR" property="fiTime" />
+    <result column="fi_add1" jdbcType="VARCHAR" property="fiAdd1" />
+    <result column="fi_add2" jdbcType="VARCHAR" property="fiAdd2" />
+    <result column="fi_add3" jdbcType="VARCHAR" property="fiAdd3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    fi_id, fi_name, fi_km, fi_num, fi_time, fi_add1, fi_add2, fi_add3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from finish_info
+    where fi_id = #{fiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from finish_info
+    where fi_id = #{fiId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.FinishInfo">
+    insert into finish_info (fi_id, fi_name, fi_km, 
+      fi_num, fi_time, fi_add1, 
+      fi_add2, fi_add3)
+    values (#{fiId,jdbcType=INTEGER}, #{fiName,jdbcType=VARCHAR}, #{fiKm,jdbcType=VARCHAR}, 
+      #{fiNum,jdbcType=VARCHAR}, #{fiTime,jdbcType=VARCHAR}, #{fiAdd1,jdbcType=VARCHAR}, 
+      #{fiAdd2,jdbcType=VARCHAR}, #{fiAdd3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.FinishInfo">
+    insert into finish_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fiId != null">
+        fi_id,
+      </if>
+      <if test="fiName != null">
+        fi_name,
+      </if>
+      <if test="fiKm != null">
+        fi_km,
+      </if>
+      <if test="fiNum != null">
+        fi_num,
+      </if>
+      <if test="fiTime != null">
+        fi_time,
+      </if>
+      <if test="fiAdd1 != null">
+        fi_add1,
+      </if>
+      <if test="fiAdd2 != null">
+        fi_add2,
+      </if>
+      <if test="fiAdd3 != null">
+        fi_add3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fiId != null">
+        #{fiId,jdbcType=INTEGER},
+      </if>
+      <if test="fiName != null">
+        #{fiName,jdbcType=VARCHAR},
+      </if>
+      <if test="fiKm != null">
+        #{fiKm,jdbcType=VARCHAR},
+      </if>
+      <if test="fiNum != null">
+        #{fiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="fiTime != null">
+        #{fiTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd1 != null">
+        #{fiAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd2 != null">
+        #{fiAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd3 != null">
+        #{fiAdd3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.FinishInfo">
+    update finish_info
+    <set>
+      <if test="fiName != null">
+        fi_name = #{fiName,jdbcType=VARCHAR},
+      </if>
+      <if test="fiKm != null">
+        fi_km = #{fiKm,jdbcType=VARCHAR},
+      </if>
+      <if test="fiNum != null">
+        fi_num = #{fiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="fiTime != null">
+        fi_time = #{fiTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd1 != null">
+        fi_add1 = #{fiAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd2 != null">
+        fi_add2 = #{fiAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="fiAdd3 != null">
+        fi_add3 = #{fiAdd3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fi_id = #{fiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.FinishInfo">
+    update finish_info
+    set fi_name = #{fiName,jdbcType=VARCHAR},
+      fi_km = #{fiKm,jdbcType=VARCHAR},
+      fi_num = #{fiNum,jdbcType=VARCHAR},
+      fi_time = #{fiTime,jdbcType=VARCHAR},
+      fi_add1 = #{fiAdd1,jdbcType=VARCHAR},
+      fi_add2 = #{fiAdd2,jdbcType=VARCHAR},
+      fi_add3 = #{fiAdd3,jdbcType=VARCHAR}
+    where fi_id = #{fiId,jdbcType=INTEGER}
+  </update>
+</mapper>

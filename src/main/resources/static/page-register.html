@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bitter Mobile Template</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+    <meta name="description" content="Bitter Mobile Template">
+    <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
+</head>
+
+<body>
+
+    <!-- Page loading -->
+    <div class="loading">
+        <div class="spinner-grow"></div>
+    </div>
+    <!-- * Page loading -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="javascript:;" class="icon goBack">
+                <i class="icon ion-ios-arrow-back"></i>
+            </a>
+        </div>
+        <div class="pageTitle">
+            <img src="assets/img/1146142386.png" alt="avatar" class="image" style="height: 45px;margin-top: 5px;">
+        </div>
+        <div class="right">
+            <a href="page-login.html" class="link"></a>
+        </div>
+    </div>
+    <!-- searchBox -->
+    <div class="searchBox">
+        <form>
+            <span class="inputIcon">
+                <i class="icon ion-ios-search"></i>
+            </span>
+            <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+            <a href="javascript:;" class="toggleSearchbox closeButton">
+                <i class="icon ion-ios-close-circle"></i>
+            </a>
+        </form>
+    </div>
+    <!-- * searchBox -->
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule" class="pb-2">
+
+        <div class="appContent pb-0">
+
+            <img src="assets/img/sample/draw-5.png" alt="img" class="img-fluid mt-3 mb-3">
+
+            <div class="sectionTitle text-center">
+                <div class="title">
+                    <h1>快来加入我们!</h1>
+                </div>
+                <div class="lead mb-3">填写报名信息</div>
+            </div>
+
+            <form action="index.html">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="keepID" id="keep">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="你要跑多少KM？" id="pl">
+                </div>
+                <div class="form-group">
+                    <!--<input type="password" class="form-control" placeholder="大概什么时候跑">-->
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option id="0">大概什么时候跑...</option>
+                        <option id="1">清早</option>
+                        <option id="2">上午</option>
+                        <option id="3">下午</option>
+                        <option id="4">晚上</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="test()">
+                      <i class="icon ion-ios-send"></i>  提交
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+    <!-- appCapsule -->
+
+    <div class="modal fade " id="intro" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+
+                    <div data-pagination='{"el": ".swiper-pagination", "hideOnClick": true}' class="swiper-container swiper-init introswiper">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="row h-100">
+                                    <div class="col-12 align-self-center text-center p-5">
+                                        <i class="material-icons icon-4x text-primary mb-4"></i>
+                                        <br>
+                                        <h4 class="text-center">提交成功</h4>
+                                        <p><br>
+                                            期待与你一起翻山越海！</p>
+                                        <br>
+                                        <a href="wide-images.html">
+                                            <button type="button" class="btn btn-primary rounded px-4" data-dismiss="modal" aria-label="Close" onclick="jump()">好的</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="assets/js/lib/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap-->
+    <script src="assets/js/lib/popper.min.js"></script>
+    <script src="assets/js/lib/bootstrap.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="assets/js/plugins/owl.carousel.min.js"></script>
+    <!-- Main Js File -->
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        function test() {
+            window.event.returnValue=false;
+            var sj = $("select option:checked").attr("id");
+
+            var keep = $("#keep").val();
+            var pl = $("#pl").val();
+
+            if(keep == ""){
+                alert("keep名必须得填啊！");
+                return;
+            }
+
+            if(/^\d+$/.test(pl)){
+
+            }else{
+                alert("跑量只需要写数字就可以啦");
+                return;
+            }
+
+
+            if (sj==="0" ) {
+                alert("请至少选一个大概跑步时间");
+                return;
+            }
+
+
+
+            var url = "apply";
+            var params = {
+                "sj":sj,
+                "keep":keep,
+                "pl":pl
+
+            };
+
+            console.log("params",params);
+            $.post(url,params,function(result){
+                if(result.state==1){
+                    // alert(result);
+                    //跳转到indexUI对应的页面
+                    // alert("sucess");
+                    tan();
+                    // alert(result.min);
+                    // alert(result.max);
+                    // min = result.min;
+                    // max = result.max;
+                    // location.href = "aboutus?min="+min+"&max="+max;
+
+
+                }else{
+
+                    alert("error");
+                }
+                return false;//防止刷新时重复提交
+            });
+
+            function tan() {
+                introcarousel();
+                /*  $('#intro').modal('show');
+                setTimeout(function() {
+                    Swiper carousel
+                    var mySwiper = new Swiper('.swiper-container', {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        autoplay: {
+                            delay: 2000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        }
+                    });
+                }, 500);*/
+
+
+            };
+
+            function introcarousel() {
+                $('#intro').modal('show');
+                setTimeout(function() {
+                    /*Swiper carousel */
+                    var mySwiper = new Swiper('.swiper-container', {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        autoplay: {
+                            delay: 1000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        }
+                    });
+                }, 500);
+            }
+
+
+
+        }
+
+        function jump() {
+            location.href='page-under-construction.html'
+        }
+    </script>
+
+</body>
+
+</html>

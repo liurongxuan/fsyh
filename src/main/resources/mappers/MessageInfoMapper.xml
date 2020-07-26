@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.MessageInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.MessageInfo">
+    <id column="msg_id" jdbcType="INTEGER" property="msgId" />
+    <result column="msg_info" jdbcType="VARCHAR" property="msgInfo" />
+    <result column="msg_ip" jdbcType="VARCHAR" property="msgIp" />
+    <result column="msg_time" jdbcType="VARCHAR" property="msgTime" />
+    <result column="msg_add1" jdbcType="VARCHAR" property="msgAdd1" />
+    <result column="msg_add2" jdbcType="VARCHAR" property="msgAdd2" />
+    <result column="msg_add3" jdbcType="VARCHAR" property="msgAdd3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msg_id, msg_info, msg_ip, msg_time, msg_add1, msg_add2, msg_add3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_info
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from message_info
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.MessageInfo">
+    insert into message_info (msg_id, msg_info, msg_ip, 
+      msg_time, msg_add1, msg_add2, 
+      msg_add3)
+    values (#{msgId,jdbcType=INTEGER}, #{msgInfo,jdbcType=VARCHAR}, #{msgIp,jdbcType=VARCHAR}, 
+      #{msgTime,jdbcType=VARCHAR}, #{msgAdd1,jdbcType=VARCHAR}, #{msgAdd2,jdbcType=VARCHAR}, 
+      #{msgAdd3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.MessageInfo">
+    insert into message_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        msg_id,
+      </if>
+      <if test="msgInfo != null">
+        msg_info,
+      </if>
+      <if test="msgIp != null">
+        msg_ip,
+      </if>
+      <if test="msgTime != null">
+        msg_time,
+      </if>
+      <if test="msgAdd1 != null">
+        msg_add1,
+      </if>
+      <if test="msgAdd2 != null">
+        msg_add2,
+      </if>
+      <if test="msgAdd3 != null">
+        msg_add3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        #{msgId,jdbcType=INTEGER},
+      </if>
+      <if test="msgInfo != null">
+        #{msgInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="msgIp != null">
+        #{msgIp,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTime != null">
+        #{msgTime,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd1 != null">
+        #{msgAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd2 != null">
+        #{msgAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd3 != null">
+        #{msgAdd3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.MessageInfo">
+    update message_info
+    <set>
+      <if test="msgInfo != null">
+        msg_info = #{msgInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="msgIp != null">
+        msg_ip = #{msgIp,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTime != null">
+        msg_time = #{msgTime,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd1 != null">
+        msg_add1 = #{msgAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd2 != null">
+        msg_add2 = #{msgAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="msgAdd3 != null">
+        msg_add3 = #{msgAdd3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.MessageInfo">
+    update message_info
+    set msg_info = #{msgInfo,jdbcType=VARCHAR},
+      msg_ip = #{msgIp,jdbcType=VARCHAR},
+      msg_time = #{msgTime,jdbcType=VARCHAR},
+      msg_add1 = #{msgAdd1,jdbcType=VARCHAR},
+      msg_add2 = #{msgAdd2,jdbcType=VARCHAR},
+      msg_add3 = #{msgAdd3,jdbcType=VARCHAR}
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </update>
+</mapper>

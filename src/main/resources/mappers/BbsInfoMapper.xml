@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.BbsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.BbsInfo">
+    <id column="bs_id" jdbcType="INTEGER" property="bsId" />
+    <result column="bs_date" jdbcType="VARCHAR" property="bsDate" />
+    <result column="bs_info" jdbcType="VARCHAR" property="bsInfo" />
+    <result column="bs_status" jdbcType="VARCHAR" property="bsStatus" />
+    <result column="bs_add1" jdbcType="VARCHAR" property="bsAdd1" />
+    <result column="bs_add2" jdbcType="VARCHAR" property="bsAdd2" />
+    <result column="bs_add3" jdbcType="VARCHAR" property="bsAdd3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bs_id, bs_date, bs_info, bs_status, bs_add1, bs_add2, bs_add3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_info
+    where bs_id = #{bsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bbs_info
+    where bs_id = #{bsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.BbsInfo">
+    insert into bbs_info (bs_id, bs_date, bs_info, 
+      bs_status, bs_add1, bs_add2, 
+      bs_add3)
+    values (#{bsId,jdbcType=INTEGER}, #{bsDate,jdbcType=VARCHAR}, #{bsInfo,jdbcType=VARCHAR}, 
+      #{bsStatus,jdbcType=VARCHAR}, #{bsAdd1,jdbcType=VARCHAR}, #{bsAdd2,jdbcType=VARCHAR}, 
+      #{bsAdd3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.BbsInfo">
+    insert into bbs_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bsId != null">
+        bs_id,
+      </if>
+      <if test="bsDate != null">
+        bs_date,
+      </if>
+      <if test="bsInfo != null">
+        bs_info,
+      </if>
+      <if test="bsStatus != null">
+        bs_status,
+      </if>
+      <if test="bsAdd1 != null">
+        bs_add1,
+      </if>
+      <if test="bsAdd2 != null">
+        bs_add2,
+      </if>
+      <if test="bsAdd3 != null">
+        bs_add3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bsId != null">
+        #{bsId,jdbcType=INTEGER},
+      </if>
+      <if test="bsDate != null">
+        #{bsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bsInfo != null">
+        #{bsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bsStatus != null">
+        #{bsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd1 != null">
+        #{bsAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd2 != null">
+        #{bsAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd3 != null">
+        #{bsAdd3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.BbsInfo">
+    update bbs_info
+    <set>
+      <if test="bsDate != null">
+        bs_date = #{bsDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bsInfo != null">
+        bs_info = #{bsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bsStatus != null">
+        bs_status = #{bsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd1 != null">
+        bs_add1 = #{bsAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd2 != null">
+        bs_add2 = #{bsAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="bsAdd3 != null">
+        bs_add3 = #{bsAdd3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bs_id = #{bsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.BbsInfo">
+    update bbs_info
+    set bs_date = #{bsDate,jdbcType=VARCHAR},
+      bs_info = #{bsInfo,jdbcType=VARCHAR},
+      bs_status = #{bsStatus,jdbcType=VARCHAR},
+      bs_add1 = #{bsAdd1,jdbcType=VARCHAR},
+      bs_add2 = #{bsAdd2,jdbcType=VARCHAR},
+      bs_add3 = #{bsAdd3,jdbcType=VARCHAR}
+    where bs_id = #{bsId,jdbcType=INTEGER}
+  </update>
+</mapper>

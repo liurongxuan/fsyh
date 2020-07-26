@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fsyh.dao.LoginInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.fsyh.model.LoginInfo">
+    <id column="lg_id" jdbcType="INTEGER" property="lgId" />
+    <result column="lg_ip" jdbcType="VARCHAR" property="lgIp" />
+    <result column="lg_location" jdbcType="VARCHAR" property="lgLocation" />
+    <result column="lg_add1" jdbcType="VARCHAR" property="lgAdd1" />
+    <result column="lg_add2" jdbcType="VARCHAR" property="lgAdd2" />
+    <result column="lg_add3" jdbcType="VARCHAR" property="lgAdd3" />
+    <result column="lg_time" jdbcType="VARCHAR" property="lgTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lg_id, lg_ip, lg_location, lg_add1, lg_add2, lg_add3, lg_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from login_info1
+    where lg_id = #{lgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from login_info1
+    where lg_id = #{lgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.fsyh.model.LoginInfo">
+    insert into login_info1 (lg_id, lg_ip, lg_location, 
+      lg_add1, lg_add2, lg_add3, 
+      lg_time)
+    values (#{lgId,jdbcType=INTEGER}, #{lgIp,jdbcType=VARCHAR}, #{lgLocation,jdbcType=VARCHAR}, 
+      #{lgAdd1,jdbcType=VARCHAR}, #{lgAdd2,jdbcType=VARCHAR}, #{lgAdd3,jdbcType=VARCHAR}, 
+      #{lgTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.fsyh.model.LoginInfo">
+    insert into login_info1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lgId != null">
+        lg_id,
+      </if>
+      <if test="lgIp != null">
+        lg_ip,
+      </if>
+      <if test="lgLocation != null">
+        lg_location,
+      </if>
+      <if test="lgAdd1 != null">
+        lg_add1,
+      </if>
+      <if test="lgAdd2 != null">
+        lg_add2,
+      </if>
+      <if test="lgAdd3 != null">
+        lg_add3,
+      </if>
+      <if test="lgTime != null">
+        lg_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lgId != null">
+        #{lgId,jdbcType=INTEGER},
+      </if>
+      <if test="lgIp != null">
+        #{lgIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lgLocation != null">
+        #{lgLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd1 != null">
+        #{lgAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd2 != null">
+        #{lgAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd3 != null">
+        #{lgAdd3,jdbcType=VARCHAR},
+      </if>
+      <if test="lgTime != null">
+        #{lgTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.fsyh.model.LoginInfo">
+    update login_info1
+    <set>
+      <if test="lgIp != null">
+        lg_ip = #{lgIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lgLocation != null">
+        lg_location = #{lgLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd1 != null">
+        lg_add1 = #{lgAdd1,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd2 != null">
+        lg_add2 = #{lgAdd2,jdbcType=VARCHAR},
+      </if>
+      <if test="lgAdd3 != null">
+        lg_add3 = #{lgAdd3,jdbcType=VARCHAR},
+      </if>
+      <if test="lgTime != null">
+        lg_time = #{lgTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lg_id = #{lgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.fsyh.model.LoginInfo">
+    update login_info1
+    set lg_ip = #{lgIp,jdbcType=VARCHAR},
+      lg_location = #{lgLocation,jdbcType=VARCHAR},
+      lg_add1 = #{lgAdd1,jdbcType=VARCHAR},
+      lg_add2 = #{lgAdd2,jdbcType=VARCHAR},
+      lg_add3 = #{lgAdd3,jdbcType=VARCHAR},
+      lg_time = #{lgTime,jdbcType=VARCHAR}
+    where lg_id = #{lgId,jdbcType=INTEGER}
+  </update>
+</mapper>
